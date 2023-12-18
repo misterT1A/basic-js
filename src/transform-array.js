@@ -22,24 +22,24 @@ function transform(arr) {
 
   const commands = {
     "--discard-prev": (arr, ind) => {
-      return ind !== 0 && arr[ind - 1] !== undefined
-        ? arr.splice(ind - 1, 2, undefined, undefined)
-        : arr.splice(ind, 1, undefined);
+      return arr[ind - 1] && arr[ind - 1] !== "undefined"
+        ? arr.splice(ind - 1, 2, "undefined", "undefined")
+        : arr.splice(ind, 1, "undefined");
     },
     "--discard-next": (arr, ind) => {
-      return arr[ind + 1] && arr[ind - 1] !== undefined
-        ? arr.splice(ind, 2, undefined, undefined)
-        : arr.splice(ind, 1, undefined);
+      return arr[ind + 1] && arr[ind - 1] !== "undefined"
+        ? arr.splice(ind, 2, "undefined", "undefined")
+        : arr.splice(ind, 1, "undefined");
     },
     "--double-prev": (arr, ind) => {
-      return ind !== 0 && arr[ind - 1] !== undefined
+      return arr[ind - 1] && arr[ind - 1] !== "undefined"
         ? (arr[ind] = arr[ind - 1])
-        : arr.splice(ind, 1, undefined);
+        : arr.splice(ind, 1, "undefined");
     },
     "--double-next": (arr, ind) => {
-      return arr[ind + 1] && arr[ind - 1] !== undefined
+      return arr[ind + 1] && arr[ind - 1] !== "undefined"
         ? (arr[ind] = arr[ind + 1])
-        : arr.splice(ind, 1, undefined);
+        : arr.splice(ind, 1, "undefined");
     },
   };
 
@@ -49,7 +49,7 @@ function transform(arr) {
     }
   });
 
-  return newArr.filter((elem) => elem !== undefined);
+  return newArr.filter((elem) => elem !== "undefined");
 }
 
 module.exports = {
